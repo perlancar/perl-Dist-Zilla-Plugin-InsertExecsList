@@ -40,10 +40,11 @@ sub _insert_execs_list {
 
     my @list;
     for my $file (@{ $self->found_files }) {
-        my $name = $file->name;
-        next if $name =~ s!^lib[/\\]!!;
-        $name =~ s!.+[/\\]!!;
-        push @list, $name;
+        my $fullname = $file->name;
+        next if $fullname =~ m!^lib[/\\]!;
+        my $shortname = $fullname; $shortname =~ s!.+[/\\]!!;
+        next if $shortname =~ /^_/;
+        push @list, $shortname;
     }
     @list = sort @list;
 
