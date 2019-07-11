@@ -1,9 +1,9 @@
-0.02    2015-08-31 (PERLANCAR)
+0.02    2015-08-31  Released-By: PERLANCAR
 
 	- By default skip completer scripts (currently hardcoded to /^_/
 	  and no configuration to skip this yet).
 
 
-0.01    2015-03-21 (PERLANCAR)
+0.01    2015-03-21  Released-By: PERLANCAR
 
          - First release.
