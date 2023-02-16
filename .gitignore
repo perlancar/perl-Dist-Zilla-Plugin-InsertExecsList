@@ -2,3 +2,4 @@ Dist-Zilla-Plugin-InsertExecsList-*
 .build
 *~
 nytprof*
+.DS_Store
