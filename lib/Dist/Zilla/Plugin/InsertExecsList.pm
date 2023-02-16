@@ -1,8 +1,5 @@
 package Dist::Zilla::Plugin::InsertExecsList;
 
-# DATE
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
@@ -15,7 +12,14 @@ with (
     },
 );
 
+has ordered => (is => 'rw', default => sub{1});
+
 use namespace::autoclean;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 sub munge_files {
     my $self = shift;
@@ -51,7 +55,7 @@ sub _insert_execs_list {
     join(
         "",
         "=over\n\n",
-        (map {"=item * L<$_>\n\n"} @list),
+        (map {"=item ".($self->ordered ? ($_+1).".":"*")." $list[$_]\n\n"} 0..$#list),
         "=back\n\n",
     );
 }
@@ -90,11 +94,11 @@ After build, lib/Foo.pm will contain:
 
  =over
 
- =item * L<script1>
+ =item 1. L<script1>
 
- =item * L<script2>
+ =item 2. L<script2>
 
- =item * L<script3>
+ =item 3. L<script3>
 
  =back
 
@@ -106,6 +110,14 @@ After build, lib/Foo.pm will contain:
 This plugin finds C<< # INSERT_EXECS_LIST >> directive in your POD/code and
 replace it with a POD containing list of scripts/executables in the
 distribution.
+
+
+=head1 CONFIGURATION
+
+=head2 ordered
+
+Bool. Default true. Can be set to false to generate an unordered list instead of
+ordered one.
 
 
 =head1 SEE ALSO
