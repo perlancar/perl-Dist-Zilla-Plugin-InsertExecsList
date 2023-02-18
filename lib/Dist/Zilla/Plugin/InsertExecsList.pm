@@ -55,7 +55,7 @@ sub _insert_execs_list {
     join(
         "",
         "=over\n\n",
-        (map {"=item ".($self->ordered ? ($_+1).".":"*")." $list[$_]\n\n"} 0..$#list),
+        (map {"=item ".($self->ordered ? ($_+1).".":"*")." L<$list[$_]>\n\n"} 0..$#list),
         "=back\n\n",
     );
 }
