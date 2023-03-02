@@ -70,7 +70,7 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 SYNOPSIS
 
-In dist.ini:
+In F<dist.ini>:
 
  [InsertExecsList]
 
